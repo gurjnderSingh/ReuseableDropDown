@@ -9,11 +9,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var btnShowDropDown: DropDown!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        btnShowDropDown.setTitle("Choose City", for: .normal)
+        btnShowDropDown.delegate = self
+        btnShowDropDown.layer.cornerRadius = 10
+        view.backgroundColor = .white
     }
 
 
+    @IBAction func tapDropDown() {}
+}
+
+extension ViewController: DropDownDelegate {
+    func didTapCell(value: String) {
+        btnShowDropDown.setTitle(value, for: .normal)
+    }
 }
 
